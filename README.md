@@ -38,6 +38,8 @@ The job frequency is defined by the `'cronExpression'` in the `.Worker`'s `appse
 `Run` both `.Api` and `.Worker` projects.
 
 ## Frontend:
+The Grid refresh rate is defined in `milliseconds` in the `'.env'` file, the `default is 65000` (SignalR or something like that, could be implemented to follow the job execution rate);
+
 Install dependencies: `npm install`
 
 Run: `npm run serve`
