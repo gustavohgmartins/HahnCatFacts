@@ -1,5 +1,5 @@
 ﻿using HahnCatFacts.Domain.Entities;
-using HahnCatFacts.Domain.Interfaces;
+using HahnCatFacts.Domain.Interfaces.Repositories;
 using HahnCatFacts.Infrastructure.Persistence.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
 

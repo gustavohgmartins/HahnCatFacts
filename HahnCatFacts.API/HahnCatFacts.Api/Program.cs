@@ -1,6 +1,6 @@
 using HahnCatFacts.Application.Interfaces.Services;
 using HahnCatFacts.Application.Services;
-using HahnCatFacts.Domain.Interfaces;
+using HahnCatFacts.Domain.Interfaces.Repositories;
 using HahnCatFacts.Infrastructure.Persistence.DataBaseContext;
 using HahnCatFacts.Infrastructure.Persistence.Repositories;
 using HahnCatFacts.Infrastructure.Services;

@@ -1,16 +1,11 @@
 <template>
-  <div class="grid-container">
-    <div class="title-container">
-      <h1>Cat Facts</h1>
-    </div>
     <ag-grid-vue class="grid" :rowData="rowData" :columnDefs="columnDefs" :defaultColDef="defaultColDef"></ag-grid-vue>
-  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
+import { defineComponent, inject, ref, onMounted, onUnmounted } from 'vue';
 import { AgGridVue } from 'ag-grid-vue3';
-import { fetchCatFacts } from '@/application/services/CatFactService';
+import { CatFactRepository } from '@/data/repositories/CatFactRepository';
 import { CatFact } from '@/domain/entities/CatFact';
 
 const refreshRateInMs = Number(process.env.VUE_APP_GRID_REFRESH_RATE) || 60000;
@@ -21,6 +16,7 @@ export default defineComponent({
     AgGridVue,
   },
   setup() {
+    const catFactRepository = inject<CatFactRepository>('catFactRepository')!;
     const rowData = ref<CatFact[]>([]);
     const columnDefs = ref([
       {
@@ -41,7 +37,7 @@ export default defineComponent({
 
     const onGridReady = async () => {
       try {
-        rowData.value = await fetchCatFacts();
+        rowData.value = await catFactRepository.getAllCatFacts();
       } catch (error) {
         console.error('Error fetching cat facts:', error);
       }
@@ -61,24 +57,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.grid-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 95vh;
-}
-
-.title-container {
-  font-family: 'Courier New', Courier, monospace;
-  margin-bottom: 20px;
-}
-
-.grid {
-  background-color: aliceblue;
-  height: 50vh;
-  width: 80%;
-}
-</style>

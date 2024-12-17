@@ -1,6 +1,6 @@
 ﻿using HahnCatFacts.Domain.Entities;
 
-namespace HahnCatFacts.Domain.Interfaces
+namespace HahnCatFacts.Domain.Interfaces.Repositories
 {
     public interface ICatFactRepository
     {

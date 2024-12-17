@@ -1,7 +1,7 @@
 ﻿using HahnCatFacts.Application.DTOs;
 using HahnCatFacts.Application.Interfaces.Services;
 using HahnCatFacts.Domain.Entities;
-using HahnCatFacts.Domain.Interfaces;
+using HahnCatFacts.Domain.Interfaces.Repositories;
 
 namespace HahnCatFacts.Application.Services
 {
