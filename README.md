@@ -28,7 +28,7 @@ Efficiently handles upserting data using Hangfire to ensure the latest cat facts
 # Getting started
 
 ## Database:
-Using SQL Server, in a databse of your choice run the `Database/CreateCatFactTable.sql` script;
+Using SQL Server, in a database of your choice run the `Database/CreateCatFactTable.sql` script;
 
 ## Backend:
 In the `appsettings.json` file of both `.Api` and `.Worker` projects set the `connection strings` to your database;
@@ -38,7 +38,7 @@ The job frequency is defined by the `'cronExpression'` in the `.Worker`'s `appse
 `Run` both `.Api` and `.Worker` projects.
 
 ## Frontend:
-The Grid refresh rate is defined in `milliseconds` in the `'.env'` file, the `default is 65000` (SignalR or something like that, could be implemented to follow the job execution rate);
+The Grid refresh rate is defined in `milliseconds` in the `'.env'` file, the `default is 65000` (SignalR or Websockets could be implemented to follow the job execution rate);
 
 Install dependencies: `npm install`
 
