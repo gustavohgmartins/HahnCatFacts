@@ -8,10 +8,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
 import { AgGridVue } from 'ag-grid-vue3';
 import { fetchCatFacts } from '@/application/services/CatFactService';
 import { CatFact } from '@/domain/entities/CatFact';
+
+const refreshRateInMs = Number(process.env.VUE_APP_GRID_REFRESH_RATE) || 60000;
 
 export default defineComponent({
   name: 'CatFactGrid',
@@ -45,8 +47,14 @@ export default defineComponent({
       }
     };
 
+    let refreshInterval: number;
     onMounted(() => {
       onGridReady();
+      refreshInterval = setInterval(onGridReady, refreshRateInMs);
+    });
+
+    onUnmounted(() => {
+      clearInterval(refreshInterval);
     });
 
     return { rowData, columnDefs, defaultColDef };

@@ -61,6 +61,12 @@ namespace HahnCatFacts.Application.Services
                     return;
                 }
 
+
+                if (IsExistingCatFact(newCatFact.Description))
+                {
+                    return;
+                }
+
                 var catFact = new CatFactDto
                 {
                     Description = newCatFact.Description
@@ -74,6 +80,13 @@ namespace HahnCatFacts.Application.Services
             {
                 throw new ApplicationException("An error occurred fetching and adding a cat fact.", ex);
             }
+        }
+
+        private bool IsExistingCatFact(string description)
+        {
+            var existingFact = _catFactRepository.GetAllNoTracking().Where(x => x.Description == description).FirstOrDefault();
+
+            return existingFact is not null;
         }
     }
 }
