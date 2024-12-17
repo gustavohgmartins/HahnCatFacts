@@ -7,22 +7,26 @@ namespace HahnCatFacts.Infrastructure.Persistence.Repositories
 {
     public class CatFactRepository : ICatFactRepository
     {
-        private readonly ApplicationDbContext _dbContex;
+        private readonly ApplicationDbContext _dbContext;
 
         public CatFactRepository(ApplicationDbContext context)
         {
-            _dbContex = context;
+            _dbContext = context;
         }
 
         public IQueryable<CatFact> GetAllNoTracking()
         {
-            return _dbContex.CatFacts.AsNoTracking();
+            return _dbContext.CatFacts.AsNoTracking();
         }
 
         public async Task AddAsync(CatFact entity)
         {
-            await _dbContex.CatFacts.AddAsync(entity);
-            await _dbContex.SaveChangesAsync();
+            await _dbContext.CatFacts.AddAsync(entity);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

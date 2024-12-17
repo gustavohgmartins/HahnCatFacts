@@ -6,5 +6,6 @@ namespace HahnCatFacts.Domain.Interfaces
     {
         public IQueryable<CatFact> GetAllNoTracking();
         public Task AddAsync(CatFact entity);
+        public Task SaveChangesAsync();
     }
 }

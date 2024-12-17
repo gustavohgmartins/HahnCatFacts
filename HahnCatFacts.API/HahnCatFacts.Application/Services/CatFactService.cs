@@ -43,6 +43,7 @@ namespace HahnCatFacts.Application.Services
                 };
 
                 await _catFactRepository.AddAsync(catFactToAdd);
+                await _catFactRepository.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -61,18 +62,14 @@ namespace HahnCatFacts.Application.Services
                     return;
                 }
 
-
                 if (IsExistingCatFact(newCatFact.Description))
                 {
+                    Console.WriteLine($"{DateTime.Now} | FetchAndAddNewCatFactAsync | INFO | Cat fact already exists");
+
                     return;
                 }
 
-                var catFact = new CatFactDto
-                {
-                    Description = newCatFact.Description
-                };
-
-                await AddCatFactAsync(catFact);
+                await AddCatFactAsync(newCatFact);
 
                 Console.WriteLine($"{DateTime.Now} | FetchAndAddNewCatFactAsync | SUCCESS | Cat fact inserted successfully");
             }
