@@ -1,0 +1,13 @@
+@HahnCatFacts.Api_HostAddress = http://localhost:5237
+
+GET {{HahnCatFacts.Api_HostAddress}}/api/CatFact
+Accept: application/json
+
+### POST request to insert a new cat fact 
+POST {{HahnCatFacts.Api_HostAddress}}/api/CatFact
+Content-Type: application/json
+Accept: application/json
+{
+    "description":"test cat cat cat"
+}
+###
