@@ -43,6 +43,6 @@ Install dependencies: `npm install`
 Run: `npm run serve`
 
 # Usage
-Access the application in your browser at ``http://localhost:8080`.
+Access the application in your browser at `http://localhost:8080`.
 
 Enjoy and filter through the delightful and educational cat facts.
