@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HahnCatFacts.Application\HahnCatFacts.Application.csproj" />
-    <ProjectReference Include="..\HahnCatFacts.Infrastructure\HahnCatFacts.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
